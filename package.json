@@ -1,0 +1,21 @@
+{
+  "name": "crud assignment",
+  "version": "1.0.0",
+  "description": "assignment submission",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Gagan D",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.2",
+    "express": "^4.21.1",
+    "mongoose": "^8.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
