@@ -113,27 +113,27 @@ The following endpoints are currently under review or fixing:
     Get Assignments for Admin: GET /api/admin/assignments (Fetching assignments needs fixes)
 
 
-## Snapshots of API testing with Postman 
-# api/user/register
+# Snapshots of API testing with Postman 
+## api/user/register
 ![api-user-register](https://github.com/user-attachments/assets/a2c23a94-a6e4-459b-9f43-01dfdd49c336)
 
-# api/user/login
+## api/user/login
 ![api-user-login](https://github.com/user-attachments/assets/3340fb3b-f5c8-45eb-ab20-0f082907aa32)
 
-# api/assignment/upload
+## api/assignment/upload
 ![api-assignment-upload](https://github.com/user-attachments/assets/3e9cc30e-f4ca-4bbe-951f-66f0398242e6)
 
-# api/admin/register
+## api/admin/register
 ![api-admin-register](https://github.com/user-attachments/assets/e828ff29-4f65-4a61-ad42-ba5f95ba31bd)
 
-# api/admin/assignments/{id}/accept
+## api/admin/assignments/{id}/accept
 ![api-admin-asssignment-id-accept](https://github.com/user-attachments/assets/34ed2c77-4fdd-421e-8c61-136e401239f5)
 
-# api/admin/assignments/{id}/reject
+## api/admin/assignments/{id}/reject
 ![api-admin-assignments-id-reject](https://github.com/user-attachments/assets/e64985a2-dc01-4d86-9981-b2e6ca3c45ad)
 
 
-## MongoDB data snapshots
+# MongoDB data snapshots
 
 ![M4](https://github.com/user-attachments/assets/329f7050-cf0c-4a0a-be49-252bdb473113)
 
