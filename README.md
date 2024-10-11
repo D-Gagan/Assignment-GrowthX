@@ -77,6 +77,8 @@ Once you have these prerequisites, follow the steps under the Run Locally sectio
     User Login: POST /api/user/login
     Upload Assignment: POST /api/assignment/upload
     Get All Assignments for Admin: GET /api/assignment
+    Admin Registration: POST /api/admin/register (Admin registration works perfectly)
+    Admin Login: POST /api/admin/login (Admins can log in to the portal)
     Accept Assignment: POST /api/assignment/:id/accept
     Reject Assignment: POST /api/assignment/:id/reject
 
@@ -102,6 +104,7 @@ Body:
     User Login: POST /api/user/login (Users can log in to the portal)
     Assignment Upload: POST /api/assignment/upload (Allows users to upload assignments)
     Admin Registration: POST /api/admin/register (Admin registration works perfectly)
+    Admin Login: POST /api/admin/login (Admins can log in to the portal)
     Assignment Acceptance/Rejection: POST /api/assignment/:id/accept and POST /api/assignment/:id/reject (Admins can accept/reject assignments)
 
 ### Endpoints Under Development:
@@ -109,7 +112,6 @@ Body:
 The following endpoints are currently under review or fixing:
 
     Get All Admins: GET /api/admins (Still resolving 404 error)
-    Admin Login: POST /api/admin/login (Encountering issues with login handling)
     Get Assignments for Admin: GET /api/admin/assignments (Fetching assignments needs fixes)
 
 
@@ -125,6 +127,9 @@ The following endpoints are currently under review or fixing:
 
 ## api/admin/register
 ![api-admin-register](https://github.com/user-attachments/assets/e828ff29-4f65-4a61-ad42-ba5f95ba31bd)
+
+## api/admin/login
+![api-admin-login](https://github.com/user-attachments/assets/e61a28f4-3a36-4d42-a2a0-436cb42c8033)
 
 ## api/admin/assignments/{id}/accept
 ![api-admin-asssignment-id-accept](https://github.com/user-attachments/assets/34ed2c77-4fdd-421e-8c61-136e401239f5)
