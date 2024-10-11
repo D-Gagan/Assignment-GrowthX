@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js";
 import assignmentRoutes from "./routes/assignmentRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 const app = express();
 app.use(bodyParser.json()); // Middleware to parse JSON request bodies
@@ -25,6 +26,10 @@ mongoose.connect(MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Mount the user routes
 app.use("/api/user", userRoutes);
+
+
+app.use("/api/admin", adminRoutes);
+
 
 // Mount the assignment routes
 app.use("/api/assignment", assignmentRoutes);
