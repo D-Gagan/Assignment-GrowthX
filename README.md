@@ -21,6 +21,7 @@ Create a .env file in the root of your project directory and include the followi
 ```bash
 PORT=5001
 MONGO_URL="mongodb://localhost:27017/crud"
+JWT_SECRET="your_jwt_secret"
 ```
 
 ### 3. Install dependencies: 
@@ -38,47 +39,17 @@ npm start
 ```
 
 
-## Test the API with Postman: 
-Use Postman to make requests to your endpoints, such as registering users, uploading assignments, and viewing assignments.
-
-
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://link-to-project
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run start
-```
-
-
 ## Features
 
-- User registration and login
-- Admin registration and login
-- Upload assignments by users
-- View assignments tagged to admins
-- Accept or reject assignments
-- Input validation and error handling
-- Modular and structured code for maintainability
+- User Registration and Login: Users can register and log in.
+- Admin Registration and Login: Admins can register and log in.
+- Assignment Upload: Users can upload assignments for admins to review.
+- Assignment Management: Admins can view, accept, and reject assignments.
+- Token-Based Authentication: Admin and user sessions are managed using JWT tokens.
+- Input Validation and Error Handling: Proper validation and error handling are in place for robust API functionality.
+- Modular and Structured Code: The code is organized to be maintainable and scalable.
 
+  
 ## Installation
 
 Make sure you have the following prerequisites installed on your machine:
@@ -91,11 +62,11 @@ Once you have these prerequisites, follow the steps under the Run Locally sectio
     
 ## Tech Stack
 
-**Node.js**: JavaScript runtime built on Chrome's V8 JavaScript engine.
-**Express**: Fast, unopinionated, minimalist web framework for Node.js.
-**MongoDB**: NoSQL database for storing user and assignment data.
-**Mongoose**: ODM library for MongoDB and Node.js.   
-**Body-parser**: Middleware to parse incoming request bodies.
+- **Node.js**: JavaScript runtime built on Chrome's V8 JavaScript engine.
+- **Express**: Fast, unopinionated, minimalist web framework for Node.js.
+- **MongoDB**: NoSQL database for storing user and assignment data.
+- **Mongoose**: ODM library for MongoDB and Node.js.   
+- **Body-parser**: Middleware to parse incoming request bodies.
 
 
 ## Usage/Examples
@@ -123,18 +94,54 @@ Body:
     "admin": "Alok"
 }
 ```
+# Current Status
 
-![P2](https://github.com/user-attachments/assets/267ec6c5-4aa1-45c9-9a2a-5e4ab790c76c)
+### Working Endpoints:
 
-![P3](https://github.com/user-attachments/assets/fa96cc7c-c859-4898-97e6-248a3b2ec6db)
+    Admin Registration: POST /api/admin/register (Admin registration works perfectly)
+    User Login: POST /api/user/login (Users can log in to the portal)
+    Assignment Upload: POST /api/assignment/upload (Allows users to upload assignments)
+    Admin Registration: POST /api/admin/register (Admin registration works perfectly)
+    Assignment Acceptance/Rejection: POST /api/assignment/:id/accept and POST /api/assignment/:id/reject (Admins can accept/reject assignments)
 
-![P8](https://github.com/user-attachments/assets/6174dc35-3c14-4b82-9e81-6bf171b8ef72)
+### Endpoints Under Development:
 
-![M1](https://github.com/user-attachments/assets/78a827c9-3f5f-4fe9-8dc8-dce0808b5dba)
+The following endpoints are currently under review or fixing:
 
-![M2](https://github.com/user-attachments/assets/4b262c22-d951-4d40-aa13-e4529d26d5f7)
+    Get All Admins: GET /api/admins (Still resolving 404 error)
+    Admin Login: POST /api/admin/login (Encountering issues with login handling)
+    Get Assignments for Admin: GET /api/admin/assignments (Fetching assignments needs fixes)
 
-![M3](https://github.com/user-attachments/assets/12ba2ec9-4504-4031-bf77-6e49ad31c403)
+
+## Snapshots of API testing with Postman 
+# api/user/register
+![api-user-register](https://github.com/user-attachments/assets/a2c23a94-a6e4-459b-9f43-01dfdd49c336)
+
+# api/user/login
+![api-user-login](https://github.com/user-attachments/assets/3340fb3b-f5c8-45eb-ab20-0f082907aa32)
+
+# api/assignment/upload
+![api-assignment-upload](https://github.com/user-attachments/assets/3e9cc30e-f4ca-4bbe-951f-66f0398242e6)
+
+# api/admin/register
+![api-admin-register](https://github.com/user-attachments/assets/e828ff29-4f65-4a61-ad42-ba5f95ba31bd)
+
+# api/admin/assignments/{id}/accept
+![api-admin-asssignment-id-accept](https://github.com/user-attachments/assets/34ed2c77-4fdd-421e-8c61-136e401239f5)
+
+# api/admin/assignments/{id}/reject
+![api-admin-assignments-id-reject](https://github.com/user-attachments/assets/e64985a2-dc01-4d86-9981-b2e6ca3c45ad)
+
+
+## MongoDB data snapshots
+
+![M4](https://github.com/user-attachments/assets/329f7050-cf0c-4a0a-be49-252bdb473113)
+
+![M5](https://github.com/user-attachments/assets/7404c278-b6fa-47d2-8c7e-d2d6e3d6225b)
+
+![M6](https://github.com/user-attachments/assets/fbbd953c-01aa-42aa-a195-b99cefb882cb)
+
+
 
 
 
