@@ -8,7 +8,11 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true, // Ensuring unique email
+        unique: true,
+    },
+    password: { // This field is necessary to store hashed passwords
+        type: String,
+        required: true,
     },
     address: {
         type: String,
