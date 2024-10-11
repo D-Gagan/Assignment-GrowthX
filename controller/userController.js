@@ -1,59 +1,58 @@
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import User from "../model/userModel.js";
 
 // For registering a new user
 export const register = async (req, res) => {
+    const { name, email, password, address } = req.body;
     try {
-        const userData = new User(req.body);
-        const { email } = userData;
+        // Check if the user already exists
         const userExist = await User.findOne({ email });
         if (userExist) {
             return res.status(400).json({ message: "User already exists." });
         }
-        const savedUser = await userData.save();
-        res.status(201).json(savedUser);
+
+        // Hash the password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        // Create new user object
+        const newUser = new User({
+            name,
+            email,
+            password: hashedPassword, // Save the hashed password
+            address
+        });
+
+        // Save the new user in the database
+        const savedUser = await newUser.save();
+
+        // Generate JWT token
+        const token = jwt.sign({ id: savedUser._id, role: "user" }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+        res.status(201).json({ token });
     } catch (error) {
+        console.error(error); // Log the error for better debugging
         res.status(500).json({ error: "Internal Server Error." });
     }
 };
 
-// For getting all users from the database
-export const fetchUsers = async (req, res) => {
+// For logging in a user (already provided)
+export const login = async (req, res) => {
+    const { email, password } = req.body;
     try {
-        const users = await User.find();
-        if (users.length === 0) {
-            return res.status(404).json({ message: "No users found." });
-        }
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(500).json({ error: "Internal Server Error." });
-    }
-};
-
-// For updating user data
-export const updateUser = async (req, res) => {
-    try {
-        const id = req.params.id;
-        const userExist = await User.findById(id);
-        if (!userExist) {
+        const user = await User.findOne({ email });
+        if (!user) {
             return res.status(404).json({ message: "User not found." });
         }
-        const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
-        res.status(200).json(updatedUser);
-    } catch (error) {
-        res.status(500).json({ error: "Internal Server Error." });
-    }
-};
 
-// For deleting a user from the database
-export const deleteUser = async (req, res) => {
-    try {
-        const id = req.params.id;
-        const userExist = await User.findById(id);
-        if (!userExist) {
-            return res.status(404).json({ message: "User not found." });
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: "Invalid credentials." });
         }
-        await User.findByIdAndDelete(id);
-        res.status(200).json({ message: "User deleted successfully." });
+
+        const token = jwt.sign({ id: user._id, role: "user" }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        res.status(200).json({ token });
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error." });
     }
